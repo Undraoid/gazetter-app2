@@ -1,0 +1,14 @@
+[21-Apr-2021 12:46:34 UTC] PHP Warning:  file_get_contents(https://corona.lmao.ninja/v2/countries/AX?yesterday&amp;strict&amp;query): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/wowwedne/public_html/Gazetteer-app/php/getData.php on line 34
+[21-Apr-2021 12:48:16 UTC] PHP Warning:  file_get_contents(https://corona.lmao.ninja/v2/countries/AX?yesterday&amp;strict&amp;query): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/wowwedne/public_html/Gazetteer-app/php/getData.php on line 34
+[21-Apr-2021 12:50:31 UTC] PHP Warning:  file_get_contents(https://corona.lmao.ninja/v2/countries/AX?yesterday&amp;strict&amp;query): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/wowwedne/public_html/Gazetteer-app/php/getData.php on line 34
+[21-Apr-2021 16:40:00 UTC] PHP Warning:  file_get_contents(http://api.openweathermap.org/data/2.5/weather?q=City of San Marino,SM&amp;APPID=4264d96a45968735df7a8073aa680813): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/wowwedne/public_html/Gazetteer-app/php/getData.php on line 60
+[22-Apr-2021 14:16:50 UTC] PHP Warning:  file_get_contents(https://corona.lmao.ninja/v2/countries/AX?yesterday&amp;strict&amp;query): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/wowwedne/public_html/Gazetteer-app/php/getData.php on line 34
+[22-Apr-2021 14:32:51 UTC] PHP Warning:  file_get_contents(https://corona.lmao.ninja/v2/countries/AX?yesterday&amp;strict&amp;query): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/wowwedne/public_html/Gazetteer-app/php/getData.php on line 34
+[22-Apr-2021 16:07:55 UTC] PHP Warning:  file_get_contents(https://corona.lmao.ninja/v2/countries/AD?yesterday&amp;strict&amp;query): failed to open stream: HTTP request failed! HTTP/1.1 502 Bad Gateway
+ in /home/wowwedne/public_html/Gazetteer-app/php/getData.php on line 34
