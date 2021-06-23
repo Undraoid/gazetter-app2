@@ -3,7 +3,7 @@ function success(data) {
   var latitude = data.coords.latitude;
   var longitude = data.coords.longitude;
 
-  
+
   let district_boundary = new L.geoJson();
 district_boundary.addTo(map); //adding country_boundry to map
 
@@ -27,7 +27,7 @@ district_boundary.addTo(map); //adding country_boundry to map
     // see full list of possible response codes:
     // https://opencagedata.com/api#codes
 
-    if (request.status === 200){ 
+    if (request.status === 200){
        var redMarker = L.ExtraMarkers.icon({
 shape: 'circle',
 markerColor: 'red',
@@ -36,8 +36,8 @@ icon: 'fa-location-arrow',
 iconColor: '#fff',
 number: '',
 svg: true,
-   
-   
+
+
     /*iconSize:     [38, 95], // size of the icon
     iconAnchor:   [11, 50], // point of the icon which will correspond to marker's location
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor*/
@@ -46,9 +46,9 @@ svg: true,
       var data = JSON.parse(request.responseText);
       var marker = L.marker(L.latLng(latitude,longitude), {icon: redMarker}).addTo( map ) // print the location
       .bindPopup("You're here");
-      
+
       map.setView([latitude, longitude], 5.1)
-      
+
 $.ajax({
   dataType: "json",
   url: "php/getgeoJson.php",
@@ -58,19 +58,32 @@ $.ajax({
   success: function (data) {
     var sorted = data.features;
     console.log(data)
-    
-     $(data.features).each(function (key, data) {
-      
+
+
+
+
+
       //district_boundary.addData(data); //adding each feature to district_boundary
-    });
+         var point = turf.point([longitude,latitude]);
+
+         $(data.features).each(function (key, data) {
+
+
+             var temp_layer = turf.booleanWithin(point,data)
+             console.log(temp_layer)
+             if(temp_layer==true){
+                 console.log(data)
+
+                 let highlight_boundary = new L.geoJson(data,highstyle());
+                 highlight_boundary.addTo(map);
+             }
+         });
   },
 }).error(function () {});
-      
-      let highlight_boundary = new L.geoJson();
-highlight_boundary.addTo(map);
+
 
 //Higlight style
-function highstyle(feature) {
+function highstyle() {
   return {
     fillColor: "blue",
     weight: 1,
@@ -79,13 +92,13 @@ function highstyle(feature) {
     fillOpacity: 0.6,
   };
 }
-   
 
-     
 
-    } else if (request.status <= 500){ 
+
+
+    } else if (request.status <= 500){
       // We reached our target server, but it returned an error
-                           
+
       console.log("unable to geocode! Response code: " + request.status);
       var data = JSON.parse(request.responseText);
       console.log('error msg: ' + data.status.message);
@@ -96,10 +109,10 @@ function highstyle(feature) {
 
   request.onerror = function() {
     // There was a connection error of some sort
-    console.log("unable to connect to server");        
+    console.log("unable to connect to server");
   };
 
-  request.send();  // make the request  
+  request.send();  // make the request
 }
 
 navigator.geolocation.getCurrentPosition(success, console.error)
