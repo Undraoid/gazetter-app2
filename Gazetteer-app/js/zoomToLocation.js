@@ -44,10 +44,10 @@ function success(data) {
    });
        // Success!
        var data = JSON.parse(request.responseText);
-       var marker = L.marker(L.latLng(latitude,longitude), {icon: redMarker}).addTo( map ) // print the location
-       .bindPopup("You're here");
+       /*var marker = L.marker(L.latLng(latitude,longitude), {icon: redMarker}).addTo( map ) // print the location
+       .bindPopup("You're here");*/
  
-       map.setView([latitude, longitude], 5.1)
+       map.setView([latitude, longitude], 5.1);
  
  $.ajax({
    dataType: "json",
@@ -76,7 +76,7 @@ function success(data) {
  
                   let highlight_boundary = new L.geoJson(data,highstyle());
                   highlight_boundary.addTo(map);
-                  $('#scrollbar').val(data.properties.ISO_A2);
+                  $('#countrySelect').val(data.properties.ISO_A2);
                   LoadCountryInfo(data.properties.ISO_A2);
 
 
@@ -286,3 +286,4 @@ function success(data) {
  
  navigator.geolocation.getCurrentPosition(success, console.error)
  
+
