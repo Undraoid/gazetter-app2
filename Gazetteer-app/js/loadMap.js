@@ -50,8 +50,8 @@ $.ajax({
     
 
     //console.log(countries_tab);
-    $(".scrollbar").html('');
-    $(".scrollbar").html(countries_tab);
+    $("#countrySelect").html('');
+    $("#countrySelect").html(countries_tab);
     //load current location on map and country in dropdown
   
     district_boundary.setStyle(polystyle); //setting style for country boundries
@@ -127,12 +127,12 @@ function highstyle(feature) {
 map.addControl( list );*/
 
 
-$('.scrollbar').change(function(){ 
+$('#countrySelect').change(function(){ 
     var iso = $(this).val();
     district_boundary.eachLayer(function (layer) {
     //console.log(layer.feature.properties.ISO_A2);
     if (layer.feature.properties.ISO_A2 == iso) {
-      $('[name=scrollbar] option').filter(function() { 
+      $('[name=countrySelect] option').filter(function() { 
         return ($(this).val() == iso); //To select Blue
       }).prop('selected', true);
       
